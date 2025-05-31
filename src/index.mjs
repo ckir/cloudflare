@@ -2,7 +2,7 @@ import { env } from "cloudflare:workers";
 
 export default {
   fetch(req) {
-    return new Response(sayHello());
+    return new Response(JSON.stringify({req:req, env: process.env}));
   },
 };
 
