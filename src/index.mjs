@@ -1,16 +1,18 @@
-import http from 'http';
+import { env } from "cloudflare:workers";
 
-// Create an HTTP server
-const server = http.createServer((req, res) => {
-    res.statusCode = 200; // HTTP status code 200 (OK)
-    res.setHeader('Content-Type', 'text/plain'); // Set the response content type
-    res.end('Hello, World!\n'); // Send the response
-});
+export default {
+  fetch(req) {
+    Response.new(sayHello());
+  },
+};
 
-// Define the port to listen on
-const PORT = process.env.PORT || 3000;
+// env is not an argument to sayHello...
+function sayHello() {
+  let myName = getName();
+  return `Hello, ${myName}`;
+}
 
-// Start the server
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
-});
+// ...nor is it an argument to getName
+function getName() {
+  return env.MY_NAME;
+}
