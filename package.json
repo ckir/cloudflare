@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/ckir/cloudflare/issues"
   },
-  "homepage": "https://github.com/ckir/cloudflare#readme"
+  "homepage": "https://github.com/ckir/cloudflare#readme",
+  "dependencies": {
+    "luxon": "^3.6.1",
+    "weblib": "github:ckir/weblib"
+  },
+  "devDependencies": {
+    "wrangler": "^4.19.1"
+  }
 }

@@ -1,4 +1,4 @@
-import apiNasdaqFetch from './apiNasdaq.mjs';
+import WebLib from 'weblib';
 
 export default {
 
@@ -14,8 +14,7 @@ export default {
     }
     if (route === '/api/nasdaq/') {
       if (method === 'GET') {
-        // return new Response(JSON.stringify(await apiNasdaqFetch(params.get('url'))));
-        return Response.json(await apiNasdaqFetch(apiEndpoint));
+        return Response.json(await WebLib.Common.Markets.Nasdaq.Api.Retrieve.endpoint(apiEndpoint));
       } else {
         return Response.json({ error: 'Method Not Allowed'}, { status: 405 });
       }
@@ -23,3 +22,16 @@ export default {
     return Response.json({ error:  'Not Found'}, { status: 404 });
   }
 };
+
+// const apiNasdaq = (await weblib.markets.nasdaq.apiNasdaq);
+// const b = await apiNasdaq();
+// let a = 5;
+
+// Example usage in another file
+// import * as weblib from 'weblib';
+
+// const nasdaqApi = await WebLib.Common.Markets.ApiNasdaq.apiNasdaqFetch('https://api.nasdaq.com/api/market-info');
+// console.log(nasdaqApi); // Output: Data from Nasdaq
+
+// console.log(weblib.Common.Utils.utilityFunction()); // Output: Utility Function Result
+// console.log(weblib.Cloudflare.cloudflareFunction()); // Output: Cloudflare function executed.
